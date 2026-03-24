@@ -19,6 +19,14 @@ import androidx.compose.ui.unit.dp
 // Import do tema
 import com.example.att_calculadora_kotlin.ui.theme.AttcalculadorakotlinTheme
 
+// Criação das classes
+class Calculadora {
+    fun somar(n1: Double, n2: Double) = n1 + n2
+    fun subtrair(n1: Double, n2: Double) = n1 - n2
+    fun multiplicar(n1: Double, n2: Double) = n1 * n2
+    fun dividir(n1: Double, n2: Double) = if (n2 != 0.0) n1 / n2 else 0.0
+}
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
