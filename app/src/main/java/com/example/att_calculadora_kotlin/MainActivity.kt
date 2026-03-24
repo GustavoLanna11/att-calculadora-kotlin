@@ -40,17 +40,67 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+fun CalculadoraScreen() {
+    // Inicializando as variáveis com valor definido
+    var num1 by rememberSaveable { mutableStateOf("5") }
+    var num2 by rememberSaveable { mutableStateOf("5") }
+    var resultado by rememberSaveable { mutableStateOf("Resultado: ") }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    AttcalculadorakotlinTheme {
-        Greeting("Android")
+    val calc = Calculadora()
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text(text = "Minha Calculadora", style = MaterialTheme.typography.headlineMedium)
+
+        Spacer(modifier = Modifier.height(20.dp))
+
+        // Input 1
+        TextField(
+            value = num1,
+            onValueChange = { num1 = it },
+            label = { Text("Número 1") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        // Input 2
+        TextField(
+            value = num2,
+            onValueChange = { num2 = it },
+            label = { Text("Número 2") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        Spacer(modifier = Modifier.height(20.dp))
+
+        // 3. Row com os 4 botões
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ) {
+            val n1 = num1.toDoubleOrNull() ?: 0.0
+            val n2 = num2.toDoubleOrNull() ?: 0.0
+
+            Button(onClick = { resultado = "Resultado: ${calc.somar(n1, n2)}" }) { Text("+") }
+            Button(onClick = { resultado = "Resultado: ${calc.subtrair(n1, n2)}" }) { Text("-") }
+            Button(onClick = { resultado = "Resultado: ${calc.multiplicar(n1, n2)}" }) { Text("*") }
+            Button(onClick = { resultado = "Resultado: ${calc.dividir(n1, n2)}" }) { Text("/") }
+        }
+
+        Spacer(modifier = Modifier.height(30.dp))
+
+        // 4. Texto de resultado
+        Text(
+            text = resultado,
+            style = MaterialTheme.typography.headlineSmall
+        )
     }
 }
