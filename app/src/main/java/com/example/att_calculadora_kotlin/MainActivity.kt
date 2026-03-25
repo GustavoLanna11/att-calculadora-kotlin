@@ -60,7 +60,7 @@ fun CalculadoraScreen() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text(text = "Calculadora Estática", style = MaterialTheme.typography.headlineMedium)
+        Text(text = "Calculadora - Kotlin", style = MaterialTheme.typography.headlineMedium)
 
         Spacer(modifier = Modifier.height(10.dp))
 
