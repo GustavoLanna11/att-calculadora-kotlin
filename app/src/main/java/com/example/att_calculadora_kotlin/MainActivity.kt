@@ -10,10 +10,11 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.att_calculadora_kotlin.ui.theme.AttcalculadorakotlinTheme
 
-// Classe conforme o UML
+// Classe conforme o UML: Atributos num01 e num02 e métodos sem parâmetros
 class Calculadora {
     var num01: Double = 5.0
     var num02: Double = 5.0
@@ -46,6 +47,12 @@ fun CalculadoraScreen() {
     var resultado by rememberSaveable { mutableStateOf("Resultado: ") }
     val calc = remember { Calculadora() }
 
+    // Configuração de cor verde para os botões
+    val configCoresVerde = ButtonDefaults.buttonColors(
+        containerColor = Color(0xFF2E7D32),
+        contentColor = Color.White
+    )
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -55,26 +62,27 @@ fun CalculadoraScreen() {
     ) {
         Text(text = "Calculadora Estática", style = MaterialTheme.typography.headlineMedium)
 
-        // Exibindo os números que já estão definidos na classe
+        Spacer(modifier = Modifier.height(10.dp))
+
+        // Exibindo os números definidos na classe
         Text(text = "Número 01: ${calc.num01}", style = MaterialTheme.typography.bodyLarge)
         Text(text = "Número 02: ${calc.num02}", style = MaterialTheme.typography.bodyLarge)
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        // Row com os botões de operação
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            Button(onClick = { resultado = "Resultado: ${calc.somar()}" }) { Text("+") }
-            Button(onClick = { resultado = "Resultado: ${calc.subtrair()}" }) { Text("-") }
-            Button(onClick = { resultado = "Resultado: ${calc.multiplicar()}" }) { Text("*") }
-            Button(onClick = { resultado = "Resultado: ${calc.dividir()}" }) { Text("/") }
+            Button(onClick = { resultado = "Resultado: ${calc.somar()}" }, colors = configCoresVerde) { Text("+") }
+            Button(onClick = { resultado = "Resultado: ${calc.subtrair()}" }, colors = configCoresVerde) { Text("-") }
+            Button(onClick = { resultado = "Resultado: ${calc.multiplicar()}" }, colors = configCoresVerde) { Text("*") }
+            Button(onClick = { resultado = "Resultado: ${calc.dividir()}" }, colors = configCoresVerde) { Text("/") }
         }
 
         Spacer(modifier = Modifier.height(30.dp))
 
-        // Visor reativo
+        // Visor que atualiza em tempo real
         Text(
             text = resultado,
             style = MaterialTheme.typography.headlineSmall
