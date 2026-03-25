@@ -14,11 +14,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.att_calculadora_kotlin.ui.theme.AttcalculadorakotlinTheme
 
-// Classe conforme o UML: Atributos num01 e num02 e métodos sem parâmetros
+// Classe conforme o UML
 class Calculadora {
+
+    // Declaração das variáveis
     var num01: Double = 5.0
     var num02: Double = 5.0
 
+    // Criação das funções para realizar as operações básicas
     fun somar(): Double = num01 + num02
     fun subtrair(): Double = num01 - num02
     fun multiplicar(): Double = num01 * num02
@@ -54,6 +57,7 @@ fun CalculadoraScreen() {
         contentColor = Color.White
     )
 
+    // Responsável por "empilhar" os elementos
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -61,6 +65,8 @@ fun CalculadoraScreen() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+
+        // Título do Projeto
         Text(text = "Calculadora - Kotlin", style = MaterialTheme.typography.headlineMedium)
 
         Spacer(modifier = Modifier.height(10.dp))
@@ -71,6 +77,7 @@ fun CalculadoraScreen() {
 
         Spacer(modifier = Modifier.height(20.dp))
 
+        // Configuração da "Linha" para exibir as operações básicas
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
