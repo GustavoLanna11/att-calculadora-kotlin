@@ -44,6 +44,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun CalculadoraScreen() {
+    // Responsável pelo Estado Reativo - Ao girar a tela o valor é mantido
     var resultado by rememberSaveable { mutableStateOf("Resultado: ") }
     val calc = remember { Calculadora() }
 
@@ -74,6 +75,7 @@ fun CalculadoraScreen() {
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
+            // Lista de botões para efetuar as operações básicas
             Button(onClick = { resultado = "Resultado: ${calc.somar()}" }, colors = configCoresVerde) { Text("+") }
             Button(onClick = { resultado = "Resultado: ${calc.subtrair()}" }, colors = configCoresVerde) { Text("-") }
             Button(onClick = { resultado = "Resultado: ${calc.multiplicar()}" }, colors = configCoresVerde) { Text("*") }
