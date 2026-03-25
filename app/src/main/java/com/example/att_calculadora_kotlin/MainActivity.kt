@@ -65,8 +65,8 @@ fun CalculadoraScreen() {
         Spacer(modifier = Modifier.height(10.dp))
 
         // Exibindo os números definidos na classe
-        Text(text = "Número 01: ${calc.num01}", style = MaterialTheme.typography.bodyLarge)
-        Text(text = "Número 02: ${calc.num02}", style = MaterialTheme.typography.bodyLarge)
+        Text(text = "Número 1: ${calc.num01}", style = MaterialTheme.typography.bodyLarge)
+        Text(text = "Número 2: ${calc.num02}", style = MaterialTheme.typography.bodyLarge)
 
         Spacer(modifier = Modifier.height(20.dp))
 
